@@ -1,0 +1,22 @@
+version: "3.3"
+services: 
+    golang-dev:
+        container_name: golang-dev
+        image: golang-dev:latest
+        ports: 
+            - 8080:8080
+        network:
+            - master-network
+    golang-dev-fe:
+        container_name: golang-dev-fe
+        image: golang-dev-fe:latest
+        ports: 
+            - 3000:3000
+        depends_on:
+            - golang-dev
+        network:
+            - master-network
+networks:
+    master-network:
+        name: master-network
+
